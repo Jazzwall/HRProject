@@ -55,7 +55,7 @@ warning 6005: The data type 'hierarchyid' is currently not supported for the tar
           <Property Name="rowguid" Type="Guid" Nullable="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityContainer Name="AdventureWorks2014Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AdventureWorks2014Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
         </EntityContainer>
       </Schema>
@@ -63,7 +63,7 @@ warning 6005: The data type 'hierarchyid' is currently not supported for the tar
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AdventureWorks2014ModelStoreContainer" CdmEntityContainer="AdventureWorks2014Entities1">
+        <EntityContainerMapping StorageEntityContainer="AdventureWorks2014ModelStoreContainer" CdmEntityContainer="AdventureWorks2014Entities2">
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="AdventureWorks2014Model.Employee">
               <MappingFragment StoreEntitySet="Employee">

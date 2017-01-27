@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HRApp
+namespace HRApp.DataAccess
 {
     using System;
     using System.Collections.Generic;

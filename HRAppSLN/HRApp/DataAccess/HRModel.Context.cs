@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HRApp
+namespace HRApp.DataAccess
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AdventureWorks2014Entities1 : DbContext
+    public partial class AdventureWorks2014Entities2 : DbContext
     {
-        public AdventureWorks2014Entities1()
-            : base("name=AdventureWorks2014Entities1")
+        public AdventureWorks2014Entities2()
+            : base("name=AdventureWorks2014Entities2")
         {
         }
     

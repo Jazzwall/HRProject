@@ -143,58 +143,56 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HRController.cs" />
-    <Compile Include="DataAccess\IHRAppContext.cs" />
-    <Compile Include="DataAccess\HRAppContext.cs" />
-    <Compile Include="DataAccess\HRAppContextFactory.cs" />
-    <Compile Include="Employee.cs">
-      <DependentUpon>HRAppModel.tt</DependentUpon>
+    <Compile Include="DataAccess\Employee.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\HRModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\HRModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\HRModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HRAppModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HRAppModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HRAppModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HRAppModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HRAppModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HRAppModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DataAccess\HRModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRModel.edmx</DependentUpon>
+      <LastGenOutput>HRModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataAccess\HRModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRModel.edmx</DependentUpon>
+      <LastGenOutput>HRModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="HRAppModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HRAppModel.edmx</DependentUpon>
-      <LastGenOutput>HRAppModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="HRAppModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HRAppModel.edmx</DependentUpon>
-      <LastGenOutput>HRAppModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Images\HR.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="HRAppModel.edmx">
+    <EntityDeploy Include="DataAccess\HRModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HRAppModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>HRModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="HRAppModel.edmx.diagram">
-      <DependentUpon>HRAppModel.edmx</DependentUpon>
+    <Content Include="DataAccess\HRModel.edmx.diagram">
+      <DependentUpon>HRModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
