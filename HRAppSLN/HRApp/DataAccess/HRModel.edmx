@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AdventureWorks2014Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AdventureWorks2014Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6005: The data type 'hierarchyid' is currently not supported for the target Entity Framework version; the column 'OrganizationNode' in the table 'AdventureWorks2014.HumanResources.Employee' was excluded.-->
         <EntityType Name="Employee">
@@ -27,11 +27,45 @@ warning 6005: The data type 'hierarchyid' is currently not supported for the tar
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="BusinessEntityID" />
+          </Key>
+          <Property Name="BusinessEntityID" Type="int" Nullable="false" />
+          <Property Name="PersonType" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="NameStyle" Type="bit" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="8" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="10" />
+          <Property Name="EmailPromotion" Type="int" Nullable="false" />
+          <Property Name="AdditionalContactInfo" Type="xml" />
+          <Property Name="Demographics" Type="xml" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Employee_Person_BusinessEntityID">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="BusinessEntityID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="BusinessEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AdventureWorks2014ModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="HumanResources" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="Person" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_Person_BusinessEntityID" Association="Self.FK_Employee_Person_BusinessEntityID">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdventureWorks2014Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -54,10 +88,47 @@ warning 6005: The data type 'hierarchyid' is currently not supported for the tar
           <Property Name="CurrentFlag" Type="Boolean" Nullable="false" />
           <Property Name="rowguid" Type="Guid" Nullable="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Person" Relationship="AdventureWorks2014Model.FK_Employee_Person_BusinessEntityID" FromRole="Employee" ToRole="Person" />
         </EntityType>
         <EntityContainer Name="AdventureWorks2014Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="People" EntityType="AdventureWorks2014Model.Person" />
+          <AssociationSet Name="FK_Employee_Person_BusinessEntityID" Association="AdventureWorks2014Model.FK_Employee_Person_BusinessEntityID">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="BusinessEntityID" />
+          </Key>
+          <Property Name="BusinessEntityID" Type="Int32" Nullable="false" />
+          <Property Name="PersonType" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="NameStyle" Type="Boolean" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EmailPromotion" Type="Int32" Nullable="false" />
+          <Property Name="AdditionalContactInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Demographics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Employee" Relationship="AdventureWorks2014Model.FK_Employee_Person_BusinessEntityID" FromRole="Person" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Employee_Person_BusinessEntityID">
+          <End Type="AdventureWorks2014Model.Person" Role="Person" Multiplicity="1" />
+          <End Type="AdventureWorks2014Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="BusinessEntityID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="BusinessEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -82,6 +153,25 @@ warning 6005: The data type 'hierarchyid' is currently not supported for the tar
                 <ScalarProperty Name="CurrentFlag" ColumnName="CurrentFlag" />
                 <ScalarProperty Name="rowguid" ColumnName="rowguid" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="AdventureWorks2014Model.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="Demographics" ColumnName="Demographics" />
+                <ScalarProperty Name="AdditionalContactInfo" ColumnName="AdditionalContactInfo" />
+                <ScalarProperty Name="EmailPromotion" ColumnName="EmailPromotion" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
+                <ScalarProperty Name="PersonType" ColumnName="PersonType" />
+                <ScalarProperty Name="BusinessEntityID" ColumnName="BusinessEntityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

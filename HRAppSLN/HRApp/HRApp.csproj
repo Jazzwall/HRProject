@@ -161,6 +161,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HRModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\Person.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

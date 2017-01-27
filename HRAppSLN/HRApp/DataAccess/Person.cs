@@ -12,24 +12,22 @@ namespace HRApp.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Person
     {
         public int BusinessEntityID { get; set; }
-        public string NationalIDNumber { get; set; }
-        public string LoginID { get; set; }
-        public Nullable<short> OrganizationLevel { get; set; }
-        public string JobTitle { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public string MaritalStatus { get; set; }
-        public string Gender { get; set; }
-        public System.DateTime HireDate { get; set; }
-        public bool SalariedFlag { get; set; }
-        public short VacationHours { get; set; }
-        public short SickLeaveHours { get; set; }
-        public bool CurrentFlag { get; set; }
+        public string PersonType { get; set; }
+        public bool NameStyle { get; set; }
+        public string Title { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string Suffix { get; set; }
+        public int EmailPromotion { get; set; }
+        public string AdditionalContactInfo { get; set; }
+        public string Demographics { get; set; }
         public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
     
-        public virtual Person Person { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

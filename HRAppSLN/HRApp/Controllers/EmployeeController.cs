@@ -21,7 +21,9 @@ namespace HRApp.Controllers
             //var employees = context.GetAllEmployees();
             //return View(employees);
             
-            var evmResults = from e in context.Employees
+            var evmResults = from e in context.Employees.AsParallel()
+                             join p in context.People.AsParallel()
+                             on e.BusinessEntityID equals p.BusinessEntityID
                              select new EmployeeViewModel()
                              {
                                  BusinessEntityID = e.BusinessEntityID,
@@ -29,7 +31,9 @@ namespace HRApp.Controllers
                                  LoginID = e.LoginID,
                                  SalariedFlag = e.SalariedFlag,
                                  SickLeaveHours = e.SickLeaveHours,
-                                 VacationHours = e.VacationHours
+                                 VacationHours = e.VacationHours,
+                                 FirstName = p.FirstName,
+                                 LastName = p.LastName
                              };
             return View(evmResults);
         }
