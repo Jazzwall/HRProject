@@ -263,6 +263,7 @@
       <DependentUpon>HRAppModel.edmx</DependentUpon>
       <LastGenOutput>HRAppModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Images\HR.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="HRAppModel.edmx">
