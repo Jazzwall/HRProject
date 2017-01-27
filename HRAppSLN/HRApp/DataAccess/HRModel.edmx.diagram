@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0085b61b54ef47a286c084bcaf112bca" Name="Diagram1">
+      <Diagram DiagramId="0085b61b54ef47a286c084bcaf112bca" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="AdventureWorks2014Model.Employee" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AdventureWorks2014Model.Person" Width="1.5" PointX="4.25" PointY="0.75" />
         <AssociationConnector Association="AdventureWorks2014Model.FK_Employee_Person_BusinessEntityID" />
