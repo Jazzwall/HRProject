@@ -163,6 +163,9 @@
     <Compile Include="CountryRegion.cs">
       <DependentUpon>HRAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\IHRAppContext.cs" />
+    <Compile Include="DataAccess\HRAppContext.cs" />
+    <Compile Include="DataAccess\HRAppContextFactory.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>HRAppModel.tt</DependentUpon>
     </Compile>
