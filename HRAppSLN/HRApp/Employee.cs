@@ -14,14 +14,6 @@ namespace HRApp
     
     public partial class Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
-        {
-            this.EmployeeDepartmentHistories = new HashSet<EmployeeDepartmentHistory>();
-            this.EmployeePayHistories = new HashSet<EmployeePayHistory>();
-            this.JobCandidates = new HashSet<JobCandidate>();
-        }
-    
         public int BusinessEntityID { get; set; }
         public string NationalIDNumber { get; set; }
         public string LoginID { get; set; }
@@ -37,13 +29,5 @@ namespace HRApp
         public bool CurrentFlag { get; set; }
         public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
-    
-        public virtual Person Person { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeePayHistory> EmployeePayHistories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JobCandidate> JobCandidates { get; set; }
     }
 }

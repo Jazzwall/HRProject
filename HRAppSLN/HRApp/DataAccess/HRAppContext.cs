@@ -14,14 +14,14 @@ namespace HRApp.DataAccess
             Configuration.ProxyCreationEnabled = useProxies;
         }
 
-        //public DbSet<Course> Courses { get; set; }
-        //public DbSet<Instructor> Instructors { get; set; }
-        //public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        //public DbSet<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
+        //public DbSet<EmployeePayHistory> EmployeePayHistories { get; set; }
 
-        //public IQueryable<Course> GetAllCourses()
-        //{
-        //    return Courses;
-        //}
+        public IQueryable<Employee> GetAllEmployees()
+        {
+            return Employees;
+        }
 
         //public IQueryable<Department> GetAllDepartments()
         //{
